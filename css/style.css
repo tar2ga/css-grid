@@ -1,0 +1,111 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.grid-container {
+    /* height: 1000px; */
+    display: grid;
+    /* auto-fit не свободного места */
+    /* auto-fill оставляет свободное место (если оно доступно под будущие элементы) */
+    /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-rows: repeat(3, minmax(100px, auto)); */
+
+    /* в квадратных скобках задаётся название колонки */
+    /* grid-template-columns: [col1-s] 150px [col2-s] 150px [col3-s] 150px;
+    grid-template-rows: [row1-s] 150px [row2-s] 150px [row3-s] 150px;
+    grid-auto-rows: minmax(100px, auto);
+    gap: 10px; */
+
+    grid-template-columns: repeat(3, minmax(150px, 300px));
+    grid-template-rows: repeat(3, minmax(100px, auto));
+    grid-auto-rows: minmax(100px, auto);
+    gap: 10px;
+
+    /* для каждого элемента устанавливает align-self */
+    /* align-items: center; */
+    /* для каждого элемента устанавливает justify-self */
+    /* justify-items: center; */
+    /* выравнивание контента по горизонтали*/
+	/* justify-content: space-around; */
+    /* выравнивание контента по вертикали (при условии что задана height)*/
+    /* align-content: space-around; */
+    /* place-content: justify-content + align-content */
+    /* place-content: space-around space-around; */
+    /* place-items: align-items + justify-items */
+    /* place-items: center center; */
+
+    grid-template-areas:
+    "header header message"
+    "blog blog message"
+    "footer footer .";
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, minmax(100px, auto));
+        grid-template-areas:
+        "header header"
+        "blog blog"
+        "message message"
+        "footer footer";
+    }
+}
+
+.grid-elem {
+    background-color: rgb(89, 89, 110);
+    color: #fff;
+    line-height: 50px;
+    text-align: center;
+    font-size: 26px;
+    border: 1px solid #000;
+    border-radius: 4px;
+}
+
+#header {
+    /* имя элемента в гриде */
+    grid-area: header;
+}
+
+#blog {
+    grid-area: blog;
+}
+
+#message {
+    grid-area: message;
+}
+
+#footer {
+    grid-area: footer;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.orange {
+    background-color: orange;
+}
+
+/* #first {
+    grid-column: col1-s / col3-s;
+} */
+
+/* #second {
+    идентично grid-row: 3 / 4;  если указана начальна строка, то конечная будет равна +1 трек
+    grid-row: 3;
+    grid-column-start: 2;
+} */
+
+/* #third {
+    grid-row: 2 / 4;
+    grid-column-start: 3;
+} */
+
+/* #first { */
+    /* align-self: center;
+    justify-self: center; */
+    /* place-self: align-self + justify-self */
+    /* place-self: center; */
+/* } */
